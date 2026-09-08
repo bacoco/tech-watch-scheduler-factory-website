@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tech Watch Scheduler Factory — Self-watch baseline</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><header class="site-header"><div class="shell nav"><a class="brand" href="../">Watch</a>
+<nav><a href="../">Latest</a><a href="../archive/">Archive</a></nav></div></header>
+<main><section class="hero"><div class="shell"><p class="eyebrow">2026-09-08</p>
+<h1>Tech Watch Scheduler Factory — Self-watch baseline</h1><p class="standfirst">A real end-to-end self-test validates the two-prompt flow, separate public Pages repository, capability checks, and lease/retry runtime. The main friction observed was repository access when the website repo was created manually.</p></div></section>
+<section class="reading"><article class="shell article"><h2>Baseline conclusion</h2>
+<p>The factory has now been run against itself through its own PREPARE and ACTIVATE contracts. The result supports the current architecture: two short user prompts, a repository-specific watch contract, separate watch and post-mortem cadence, a public website projection, and bounded runtime recovery.</p>
+<div class="callout"><strong>Operational lesson:</strong> when permissions allow it, prefer letting the connected GitHub App create the <code>*-website</code> repository. In this self-test, a manually created website repository initially returned <code>403 Resource not accessible by integration</code> until repository access was explicitly granted.</div>
+
+<h2>What was tested</h2>
+<table>
+<thead><tr><th>Layer</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td>PREPARE</td><td><code>scheduler-techno/</code> was generated for the factory itself with real external research and a repository-specific profile.</td></tr>
+<tr><td>Runtime</td><td>Dedicated mode was selected for this isolated self-watch: weekly watch, monthly post-mortem.</td></tr>
+<tr><td>T0</td><td>A distinct initial research run was completed and frozen; future discoveries move through UPDATE rather than rewriting the baseline.</td></tr>
+<tr><td>Website</td><td>This page is the public editorial projection of the T0. Internal state, receipts and raw baseline files remain in the source repository.</td></tr>
+</tbody>
+</table>
+
+<h2>1. ChatGPT Scheduled Tasks</h2>
+<p>Current OpenAI documentation supports recurring and monitoring tasks, while availability and connected-app capabilities remain dependent on the account and execution context. External actions can require approval. The factory therefore keeps capability checks and verified-state reporting as first-class requirements.</p>
+<p><a href="https://help.openai.com/en/articles/10291617">OpenAI — Scheduled tasks in ChatGPT</a></p>
+
+<h2>2. GitHub access and Pages</h2>
+<p>GitHub Apps can be installed for selected repositories, which means repository visibility to the App is distinct from the App's endpoint permissions. This self-test reproduced that boundary directly. GitHub Pages continues to support branch publication from <code>/(root)</code> or <code>/docs</code>, matching the factory's separate static website contract.</p>
+<p><a href="https://docs.github.com/en/apps/using-github-apps/reviewing-and-modifying-installed-github-apps">GitHub — Review and modify installed GitHub Apps</a><br>
+<a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">GitHub — Configure a Pages publishing source</a></p>
+
+<h2>3. Runtime reliability</h2>
+<p>The multiplexed runtime uses deterministic dispatch identity, a bounded lease, bounded retry, and a failed archive. These choices align with established queue reliability patterns: work becomes recoverable after a visibility timeout, and retried work must be designed for idempotence because duplicate delivery remains possible.</p>
+<p><a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html">AWS — SQS visibility timeout</a><br>
+<a href="https://docs.cloud.google.com/run/docs/jobs-retries">Google Cloud — Job retries</a></p>
+
+<h2>4. User-facing flow</h2>
+<p>The public entry point remains intentionally small: one short prompt reads <code>prompts/PREPARE.md</code>, and a second reads <code>prompts/ACTIVATE.md</code>. The detailed authority stays versioned in Git rather than being copied into a long README prompt.</p>
+<p>After each validated T0 or UPDATE, the watch creates or updates the separate public website repository, adds the dated edition, and refreshes the home and archive.</p>
+
+<h2>Initial cadence</h2>
+<ul>
+<li><strong>Watch:</strong> every 7 days.</li>
+<li><strong>Post-mortem:</strong> every 30 days, after enough runs exist to judge noise and useful signal.</li>
+<li><strong>New issues from this baseline:</strong> none. The observed findings are already represented by current contracts.</li>
+</ul>
+
+<h2>Limits</h2>
+<p>This baseline validates the public product flow and the primary external dependencies needed by that flow. It does not claim exhaustive coverage of distributed scheduler research or of every user's experience.</p></article></section></main>
+<footer><div class="shell">Evidence-led public research · generated from a separate source repository.</div></footer>
+</body></html>
