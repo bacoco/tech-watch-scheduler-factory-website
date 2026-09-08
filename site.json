@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "source_repository": "bacoco/tech-watch-scheduler-factory",
+  "public_repository": "bacoco/tech-watch-scheduler-factory-website",
+  "editions": [
+    {
+      "slug": "tech-watch-scheduler-factory-2026-09-08",
+      "date": "2026-09-08",
+      "title": "Tech Watch Scheduler Factory — Self-watch baseline",
+      "excerpt": "A real end-to-end self-test validates the two-prompt flow, separate public Pages repository, capability checks, and lease/retry runtime. The main friction observed was repository access when the website repo was created manually."
+    }
+  ]
+}
