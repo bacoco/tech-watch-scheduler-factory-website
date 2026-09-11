@@ -4,6 +4,12 @@
   "public_repository": "bacoco/tech-watch-scheduler-factory-website",
   "editions": [
     {
+      "slug": "tech-watch-scheduler-factory-2026-09-08-update-001",
+      "date": "2026-09-11",
+      "title": "Tech Watch Scheduler Factory — Recovery, event signals and same-occurrence resume",
+      "excerpt": "UPDATE 001 is now complete: the self-hosting inventory fix remains valid, the factory has a dedicated same-occurrence recovery path, and OpenAI's event-triggered tasks are worth evaluating as an optional GitHub signal rather than a replacement for periodic research."
+    },
+    {
       "slug": "tech-watch-scheduler-factory-2026-09-08",
       "date": "2026-09-08",
       "title": "Tech Watch Scheduler Factory — Self-watch baseline",

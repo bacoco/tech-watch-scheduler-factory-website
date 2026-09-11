@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tech Watch Scheduler Factory — Recovery, event signals and same-occurrence resume</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><header class="site-header"><div class="shell nav"><a class="brand" href="../">Watch</a>
+<nav><a href="../">Latest</a><a href="../archive/">Archive</a></nav></div></header>
+<main><section class="hero"><div class="shell"><p class="eyebrow">UPDATE 001 · COMPLETED 2026-09-11</p>
+<h1>Tech Watch Scheduler Factory — Recovery, event signals and same-occurrence resume</h1><p class="standfirst">UPDATE 001 is now complete: the self-hosting inventory fix remains valid, the factory has a dedicated same-occurrence recovery path, and OpenAI's event-triggered tasks are worth evaluating as an optional GitHub signal rather than a replacement for periodic research.</p></div></section>
+<section class="reading"><article class="shell article">
+<h2>What changed</h2>
+<p>The first UPDATE occurrence had a real finding but was never closed with its full research receipt and website delivery. Recovery resumed that same occurrence rather than starting a new weekly cycle.</p>
+<div class="callout"><strong>Recovery result:</strong> the watch is complete. The public files are delivered, while GitHub Pages activation remains a separate unverified setting and is not presented as live.</div>
+
+<h2>1. Self-hosting defect remains fixed</h2>
+<p>The factory's strict package inventory validator originally treated the generated <code>scheduler-techno/</code> runtime directory as distributable source. Commit <code>14e45a6</code> fixed that by excluding generated watch state without changing the distribution manifest.</p>
+
+<h2>2. Recovery is now a first-class runtime path</h2>
+<p>The current dedicated runtime adds a six-hour technical recovery task. It acts only on the latest incomplete occurrence, resumes that exact occurrence from durable state, and requires positive current evidence before treating another writer as concurrent. This recovery exercised those semantics directly.</p>
+<p>That design is consistent with established failure models: visibility timeouts can make work redeliverable, durable execution should resume persisted progress after failure, and retries should be bounded.</p>
+<p><a href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sqs/client/receive_message.html">AWS — SQS receive_message</a><br>
+<a href="https://docs.temporal.io/encyclopedia/durable-execution">Temporal — Durable Execution</a><br>
+<a href="https://docs.cloud.google.com/run/docs/jobs-retries">Google Cloud — Job retries</a></p>
+
+<h2>3. OpenAI now documents event-triggered Scheduled Tasks</h2>
+<p>OpenAI's current Scheduled Tasks documentation and its 25 August 2026 release notes describe tasks triggered by supported app events, including Gmail, Slack and GitHub pull-request activity. For this factory, that is an optional signal path—not a substitute for the weekly watch, which still needs open-web and multi-source research.</p>
+<p><a href="https://help.openai.com/en/articles/10291617">OpenAI — Scheduled tasks in ChatGPT</a><br>
+<a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes">OpenAI — ChatGPT release notes</a></p>
+<p>A follow-up proposal was opened as issue <a href="https://github.com/bacoco/tech-watch-scheduler-factory/issues/7">#7</a>: evaluate <code>periodic | periodic+event</code> with stable deduplication, no extra authority from the event, and periodic fallback.</p>
+
+<h2>4. GitHub repository delivery and Pages remain separate</h2>
+<p>The public website repository is separate from the canonical source repo and accepts writes through the connected GitHub integration. GitHub's documentation continues to distinguish repository selection from API permissions, and Pages can publish from <code>main</code> at the repository root.</p>
+<p>This run can verify committed website files, but the available integration does not expose a Pages-settings mutation/status operation. A live Pages URL is therefore not claimed.</p>
+<p><a href="https://docs.github.com/en/apps/using-github-apps/reviewing-and-modifying-installed-github-apps">GitHub — installed GitHub Apps</a><br>
+<a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">GitHub — Pages publishing source</a></p>
+
+<h2>Decision</h2>
+<ul>
+<li><strong>Keep:</strong> weekly periodic watch as the authoritative research cycle.</li>
+<li><strong>Keep:</strong> six-hour recovery only for the latest incomplete occurrence.</li>
+<li><strong>Evaluate:</strong> event-triggered GitHub activity as an optional low-latency signal.</li>
+<li><strong>Keep separate:</strong> website file publication and actual Pages activation.</li>
+</ul>
+
+<h2>Limits</h2>
+<p>Event-triggered support is product- and connection-dependent and the documented GitHub event surface is narrower than this watch. Queue and durable-execution products are used as transferable failure models, not as claims that ChatGPT implements the same infrastructure.</p>
+</article></section></main>
+<footer><div class="shell">Evidence-led public research · generated from a separate source repository.</div></footer>
+</body></html>
